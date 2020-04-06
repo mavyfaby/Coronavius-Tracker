@@ -1,0 +1,20 @@
+{
+  "name": "covid-19",
+  "version": "1.0.0",
+  "description": "Real-time monitoring",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "keywords": [
+    "covid",
+    "node",
+    "data"
+  ],
+  "author": "Maverick G. Fabroa",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "open-graph-scraper": "^3.6.2"
+  }
+}

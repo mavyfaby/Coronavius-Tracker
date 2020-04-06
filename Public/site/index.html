@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html prefix="og: https://ogp.me/ns#">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+		<meta name="author" content="Maverick G. Fabroa" />
+		<meta name="description" content="Get real-time data of the coronavirus disease in every country." />
+		<meta name="keywords" content="covid, corona, tracker, data, worldwide, pandemic" />
+		<meta name="theme-color" content="#F7F7F8" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta property="og:title" content="Mavyfaby | Worldwide Coronavirus Tracker" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://mavyfaby.ml/projects/covid" />
+		<meta property="og:description" content="Get real-time data of the coronavirus disease in every country." />
+		<meta property="og:email" content="maverickfabroa@gmail.com"/>
+		<meta property="og:phone_number" content="+639229629963"/>
+		<meta property="og:image" content="https://mavyfaby.ml/projects/covid/images/mainimage.jpg">
+		<meta property="og:image:width" content="3500">
+		<meta property="og:image:height" content="2333">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Mavyfaby | Worldwide Coronavirus Tracker</title>
+		<!-- Site Icon -->
+		<link rel="shortcut icon" type="image/x-icon" href="./images/icon.png" /> 
+		<!-- Framework7 (CSS) -->
+		<link rel="stylesheet" type="text/css" href="./libraries/framework7/css/framework7.bundle.min.css" />
+		<!-- Fonts -->
+		<link rel="stylesheet" type="text/css" href="./fonts/Google/font.css" />
+		<link rel="stylesheet" type="text/css" href="./fonts/Nunito/font.css" />
+		<!-- Custom Styles -->
+		<link rel="stylesheet" type="text/css" href="./css/style.css" />
+	</head>
+	<body>
+		<div id="app" class="loaded">
+			<div class="panel panel-left panel-cover panel-resizable panel-init">
+				<div class="page">
+					<div class="page-content">
+						<div class="block-title">Preferences</div>
+						<div class="list simple-list">
+							<ul>
+								<li>
+									<span>Dark Mode</span>
+									<label class="toggle toggle-init" id="dark-mode">
+										<input type="checkbox" id="dark-mode-input">
+										<span class="toggle-icon"></span>
+									</label>
+								</li>
+							</ul>
+						</div>
+						<div class="block-title">Others</div>
+						<div class="list links-list">
+							<ul>
+								<li>
+									<a class="smart-select smart-select-init panel-close" data-open-in="sheet">
+										<select class="selected-theme">
+											<option value="blue">Blue</option>
+											<option value="purple">Purple</option>
+											<option value="deeppurple" selected>Deep Purple</option>
+											<option value="teal">Teal</option>
+										</select>
+										<div class="item-title">Change Theme</div>
+									</a>
+								</li>
+								<li><a href="#" class="panel-close sheet-open" data-sheet=".about-sheet">About</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="view view-main view-init" data-url="/">
+				<div class="navbar">
+					<div class="navbar-bg"></div>
+					<div class="navbar-inner sliding">
+						<div class="left">
+							<a href="#" class="link icon-only panel-open" data-panel="left">
+							<i class="icon f7-icons if-not-md">menu</i>
+							<i class="icon material-icons md-only">menu</i>
+						</a>
+						</div>
+						<div class="title sliding">{{ title }}</div>
+					</div>
+				</div>
+				<div class="page">
+					<!-- About Swipe Sheet -->
+					<div class="sheet-modal about-sheet demo-sheet-swipe-to-close" style="height:auto">
+						<div class="sheet-modal-inner">
+							<div class="swipe-handler"></div>
+							<div class="page-content">
+								<div class="block-title block-title-large">About</div>
+								<div class="block">
+									<p>All source data was extracted at <a href="https://thevirustracker.com/" class="link external" target="_blank">https://thevirustracker.com</a>, a real-time coronavirus disease tracker that shows the details of every affected country. Futhermore, the data shows in real-time, because of that, 60KB will spend every 2 seconds in order to get real-time data.</p><br />
+									<p>This site is created by <b>Maverick G. Fabroa</b></p><br />
+									<p>Email: <a href="#" class="link">maverickfabroa@gmail.com</a></p>
+									<p>Facebook: <a href="https://facebook.com/mavy.faby/" class="link external" target="_blank">https://facebook.com/mavy.faby/</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- FAB -->
+					<div class="fab-backdrop"></div>
+					<div class="fab fab-right-bottom">
+						<a href="#">
+							<i class="icon f7-icons if-not-md">plus</i>
+							<i class="icon f7-icons if-not-md">xmark</i>
+							<i class="material-icons md-only">add</i>
+							<i class="material-icons md-only">close</i>
+						</a>
+						<div class="fab-buttons fab-buttons-top">
+							<a href="#" class="fab-label-button fab-close" id="search-country">
+								<span class="material-icons">search</span>
+								<span class="fab-label">Search Country</span>
+							</a>
+							<a href="#" class="fab-label-button fab-close" id="global-stats">
+								<span class="f7-icons">chart_bar</span>
+								<span class="fab-label">Global Statistics</span>
+							</a>
+							<a href="#" class="fab-label-button fab-close" id="share">
+								<span class="material-icons">share</span>
+								<span class="fab-label">Share</span>
+							</a>
+						</div>
+					</div>
+					<!-- Pick Color -->
+					
+					<!-- Swipe To Step Search Result -->
+					<div class="sheet-modal result-sheet demo-sheet-swipe-to-step" style="height: auto;">
+						<div class="sheet-modal-inner">
+							<div class="swipe-handler" v-on:click="toggleSwipeStep"></div>
+							<div class="sheet-modal-swipe-step">
+								<div class="display-flex justify-content-center">
+									<h1>{{ result.title }}</h1>
+								</div>
+								<div class="padding-horizontal padding-bottom">
+									<div class="margin-top text-align-center">Swipe up for the details,</div>
+								</div>
+							</div>
+							<div class="block-title block-title-medium margin-top">Live Data: </div>
+							<div class="block block-strong">
+								<p>Total Cases: {{ fn(result.total_cases) }}</p>
+								<p>Total Recovered: {{ fn(result.total_recovered) }}</p>
+								<p>Total Unresolved: {{ fn(result.total_unresolved) }}</p>
+								<p>Total Deaths: {{ fn(result.total_deaths) }}</p>
+								<p>Total New Cases Today: {{ fn(result.total_new_cases_today) }}</p>
+								<p>Total New Deaths Today: {{ fn(result.total_new_deaths_today) }}</p>
+								<p>Total Active Cases: {{ fn(result.total_active_cases) }}</p>
+								<p>Total Serious Cases: {{ fn(result.total_serious_cases) }}</p><br />
+								<p class="text-align-center">Source: <a href="https://thevirustracker.com" class="link external" target="_blank">https://thevirustracker.com</a></p>
+							</div>
+						</div>
+					</div>
+					<!-- Swipe To Step Global Result -->
+					<div class="sheet-modal global-sheet demo-sheet-swipe-to-step" style="height: auto;">
+						<div class="sheet-modal-inner">
+							<div class="swipe-handler" v-on:click="toggleSwipeStep"></div>
+							<div class="sheet-modal-swipe-step">
+								<div class="display-flex justify-content-center">
+									<h1>Global Statistics</h1>
+								</div>
+								<div class="padding-horizontal padding-bottom">
+									<div class="margin-top text-align-center">Swipe up for the details,</div>
+								</div>
+							</div>
+							<div class="block-title block-title-medium margin-top">Live Data: </div>
+							<div class="block block-strong">
+								<p>Total Cases: {{ fn(gResult.total_cases) }}</p>
+								<p>Total Recovered: {{ fn(gResult.total_recovered) }}</p>
+								<p>Total Unresolved: {{ fn(gResult.total_unresolved) }}</p>
+								<p>Total Deaths: {{ fn(gResult.total_deaths) }}</p>
+								<p>Total New Cases Today: {{ fn(gResult.total_new_cases_today) }}</p>
+								<p>Total New Deaths Today: {{ fn(gResult.total_new_deaths_today) }}</p>
+								<p>Total Active Cases: {{ fn(gResult.total_active_cases) }}</p>
+								<p>Total Serious Cases: {{ fn(gResult.total_serious_cases) }}</p><br />
+								<p class="text-align-center">Source: <a href="https://thevirustracker.com" class="link external" target="_blank">https://thevirustracker.com</a></p>
+							</div>
+						</div>
+					</div>
+					<!-- Page Content -->
+					<div class="page-content hide-navbar-on-scroll main-content">
+						<div class="block">
+							<div class="row">
+								<div class="card elevation-12" v-bind:class="{ 'col-100': isMobile(), 'medium-50': !isMobile() }" v-for="data in orderedData" v-bind:id="data.code">
+									<div class="card-header">{{ data.title }}</div>
+									<div class="card-content card-content-padding">
+										<p>Total Cases: {{ fn(data.total_cases) }}</p>
+										<p>Total Recovered: {{ fn(data.total_recovered) }}</p>
+										<p>Total Unresolved: {{ fn(data.total_unresolved) }}</p>
+										<p>Total Deaths: {{ fn(data.total_deaths) }}</p>
+										<p>Total New Cases Today: {{ fn(data.total_new_cases_today) }}</p>
+										<p>Total New Deaths Today: {{ fn(data.total_new_deaths_today) }}</p>
+										<p>Total Active Cases: {{ fn(data.total_active_cases) }}</p>
+										<p>Total Serious Cases: {{ fn(data.total_serious_cases) }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Framework7 (JS) -->
+		<script defer type="text/javascript" src="./libraries/framework7/js/framework7.bundle.min.js"></script>
+		<!-- Vue -->
+		<script defer type="text/javascript" src="./libraries/vue/vue.min.js"></script>
+		<!-- Crypto -->
+		<script defer type="text/javascript" src="./libraries/crypto/crypto-js.min.js"></script>
+		<!-- Firebase -->
+		<script defer type="text/javascript" src="./libraries/firebase/firebase-app.js"></script>
+		<script defer type="text/javascript" src="./libraries/firebase/firebase-auth.js"></script>
+		<script defer type="text/javascript" src="./libraries/firebase/firebase-database.js"></script>-->
+		<!-- Lodash -->
+		<script defer type="text/javascript" src="./libraries/lodash/lodash.min.js"></script>
+		<!-- Main -->
+		<script defer type="text/javascript" src="./js/app.js"></script>
+	</body>
+</html>
