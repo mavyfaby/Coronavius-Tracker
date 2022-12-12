@@ -14,7 +14,7 @@
   "author": "Maverick G. Fabroa",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "open-graph-scraper": "^3.6.2"
   }
 }
